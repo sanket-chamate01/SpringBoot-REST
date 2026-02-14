@@ -1,5 +1,6 @@
 package com.example.rest.controller;
 
+import com.example.rest.exceptions.StudentNotFoundException;
 import com.example.rest.model.Student;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,9 @@ public class DemoRestController {
 
     @GetMapping("/students/{studentId}")
     public Student getStudent(@PathVariable int studentId){
+        if(studentId >= students.size() || studentId < 0){
+            throw new StudentNotFoundException("Student Id " + studentId + " not found");
+        }
         return students.get(studentId);
     }
 }
