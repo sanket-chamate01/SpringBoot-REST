@@ -5,10 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice
+@ControllerAdvice // make the exception handler global and available to all controller
 public class StudentRestExceptionHandler {
     // Add an exception handler
-    @ExceptionHandler
+//    @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exp){
 
 //        create a student error response
